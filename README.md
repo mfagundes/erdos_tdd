@@ -20,6 +20,9 @@ Optei por usar apenas um arquivo, replicando o modelo do repl.it (perdão pelo t
 - instalar o pytest
 
 ##Commits:
+- Commit 2:
+  - Inseri um terceiro nível
+  - Os testes passam, mas surge a necessidade de uma recursividade, pois ele atende apenas àquela sequência de publicações
 - Commit 1:
   - Criação do Readme
   - Testes com níveis 1 e 2

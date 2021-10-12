@@ -25,8 +25,15 @@ def erdos(publicacoes):
             namerdos['a'] = 1
             if 'b' in autores:
                 namerdos['b'] = 2
+        if 'b' in autores:
+            if 'c' in autores:
+                namerdos['c'] = namerdos['b'] + 1
 
     return namerdos
+
+def test_nivel_3():
+    publicacoes =[['erdos'], ['erdos', 'a'], ['a', 'b'], ['c', 'b']]
+    assert erdos(publicacoes) == {'erdos': 0, 'a': 1, 'b': 2, 'c': 3}
 
 def test_nivel_2():
     publicacoes = [['erdos'], ['erdos', 'a'], ['a', 'b']]
