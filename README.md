@@ -15,6 +15,10 @@ Este problema foi adaptado de http://br.spoj.pl/problems/NUMERDOS/. A descriçã
 ```
 Optei por usar apenas um arquivo, replicando o modelo do repl.it (perdão pelo trocadilho), uma vez que é sequência do Dojo de 11/10/2021
 
+**Observação:** como o problema fala em número infinito busquei a solução mais simples, que é usar o float('inf'). 
+Nos testes, porém, isso se mostra incorreto, uma vez que qualquer inteiro é aceito como float('inf'). 
+Por falta de tempo (e por julgar desnecessário fazer isso neste momento), optei por deixar assim.
+
 ## Ambiente
 - criar um virtualenv com Python >= 3.8
 - instalar o pytest
@@ -36,3 +40,8 @@ Optei por usar apenas um arquivo, replicando o modelo do repl.it (perdão pelo t
   - A recursividade fica mais clara e o valor de cada autor dependerá, na verdade, do valor mais baixo dos demais autores (será esse valor acrescido de 1)
   
   **Observação:** alterei a ordem dos commits no README para ficarem em ordem cronológica ascendente
+- Commit 4:
+  - Busca na lista de autores, que é iterada, sua posição, para usá-la posteriormente
+  - Cria uma lista de autores sem o autor atual, a fim de buscar o menor índice erdos dentre eles
+  - Dentre os colaboradores de um determinado artigo o índice erdos deste colaborador será o menor índice acrescido de 1
+- **Observação:** alguns testes estão desnecessários, mas preferi parar por aqui
