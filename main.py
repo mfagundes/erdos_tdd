@@ -17,17 +17,18 @@ namerdos = {
 
 
 def erdos(publicacoes):
-    namerdos = {}
+    namerdos = {'erdos': 0}  # refatorando, já que erdos sempre será o topo do gráfico, com o valor zero
     for autores in publicacoes:
-        if 'erdos' in autores:
-            namerdos['erdos'] = 0
-        if 'a' in autores:
-            namerdos['a'] = 1
-            if 'b' in autores:
-                namerdos['b'] = 2
-        if 'b' in autores:
-            if 'c' in autores:
-                namerdos['c'] = namerdos['b'] + 1
+        for autor in autores:
+            if autor == 'erdos':
+                continue
+            if 'erdos' in autores:
+                namerdos[autor] = 1
+            else:
+                if 'a' in namerdos:
+                    namerdos['b'] = namerdos['a'] + 1
+                    if autor == 'c':
+                        namerdos['c'] = namerdos['b'] + 1
 
     return namerdos
 

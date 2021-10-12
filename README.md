@@ -20,12 +20,19 @@ Optei por usar apenas um arquivo, replicando o modelo do repl.it (perdão pelo t
 - instalar o pytest
 
 ##Commits:
-- Commit 2:
-  - Inseri um terceiro nível
-  - Os testes passam, mas surge a necessidade de uma recursividade, pois ele atende apenas àquela sequência de publicações
-- Commit 1:
-  - Criação do Readme
-  - Testes com níveis 1 e 2
 - Initial commit
   - preparação do ambiente
   - Teste apenas com o Erdos
+- Commit 1:
+  - Criação do Readme
+  - Testes com níveis 1 e 2
+- Commit 2:
+  - Inseri um terceiro nível
+  - Os testes passam, mas surge a necessidade de uma recursividade, pois ele atende apenas àquela sequência de publicações
+- Commit 3:
+  - O dicionário inicializa com erdos com valor zero
+  - No laço o autor 'erdos' é ignorado
+  - Se o autor está em uma publicação com o erdos, ele necessariamente terá o valor 1
+  - A recursividade fica mais clara e o valor de cada autor dependerá, na verdade, do valor mais baixo dos demais autores (será esse valor acrescido de 1)
+  
+  **Observação:** alterei a ordem dos commits no README para ficarem em ordem cronológica ascendente
