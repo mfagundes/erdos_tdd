@@ -57,6 +57,7 @@ def test_autores_sem_erdos():
 
 def test_autores_sem_erdos():
     publicacoes =[['erdos', 'a'], ['a', 'b'], ['c', 'b']]
+    assert erdos(publicacoes) == {'erdos': 0, 'a': 1, 'b': 2, 'c': 3}
 
 def test_nivel_3():
     publicacoes =[['erdos'], ['erdos', 'a'], ['a', 'b'], ['c', 'b']]
