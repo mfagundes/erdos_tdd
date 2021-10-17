@@ -44,4 +44,9 @@ Por falta de tempo (e por julgar desnecessário fazer isso neste momento), optei
   - Busca na lista de autores, que é iterada, sua posição, para usá-la posteriormente
   - Cria uma lista de autores sem o autor atual, a fim de buscar o menor índice erdos dentre eles
   - Dentre os colaboradores de um determinado artigo o índice erdos deste colaborador será o menor índice acrescido de 1
-- **Observação:** alguns testes estão desnecessários, mas preferi parar por aqui
+- Commit 5:
+  - Após revisar, observei que faltava o assert em um dos testes, o que os invalidava
+  - Feita a correção do teste sem assert, verifiquei que o script não adicionava 'inf' a autores cujos coautores
+  também fossem 'inf'
+  - Na lista de índices de coautores adicionei o 'inf'
+  - Alterei o valor default do get dos índices de coautores para 'inf'

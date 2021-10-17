@@ -28,36 +28,39 @@ def erdos(publicacoes):
                 # aqui entra uma lista de autores em que erdos não está incluída, daí entendemos se tratar
                 # de uma lista sem nenhum colaborador (uma publicação individual)
                 if len(autores) == 1:
-                    namerdos[autor] = float('inf')  # aqui foi dado um passo a mais, não seria necessário nesse momento
+                    namerdos[autor] = float('inf')
                 else:
                     outros_autores = autores[:]
-                    _ = outros_autores.pop(pos)  # elimina o autor atual da lista de autores da publicação
-                    indice_autores = []  # essa lista receberá o índice dos demais autores da publicação
+                    del(outros_autores[pos])  # elimina o autor atual da lista de autores da publicação
 
-                    # aqui ficaria melhor uma list comprehension
-                    for outro in outros_autores:
-                        if outro in namerdos:
-                            indice_autores.append(namerdos[outro])
+                    # essa lista receberá o índice dos demais autores da publicação, mais o 'inf'
+                    # isto é necessário para incluir no dicionário autor que não tenha nenhuma colaboração,
+                    # direta ou indireta, com Erdos
+                    indice_autores = [namerdos[outro] for outro in outros_autores if outro in namerdos] + [float('inf')]
 
                     # determina o menor índice erdos entre os colaboradores do artigo e adiciona 1
                     if len(indice_autores) > 0:
                         indice_min = min(indice_autores)
-                        if indice_min <= namerdos.get(autor, 2):  # 0 é erdos e 1 são todos que têm erdos
+                        if indice_min <= namerdos.get(autor, float('inf')):
                             namerdos[autor] = indice_min + 1
 
     return namerdos
 
-def test_autor_sem_erdos():
-    publicacoes = [['a']]
-    assert erdos(publicacoes) == {'erdos': 0, 'a': float('inf')}
+def test_autores_sem_erdos_3_autores():
+    publicacoes = [['erdos', 'a'], ['a', 'b'], ['c', 'd', 'e']]
+    assert erdos(publicacoes) == {'erdos': 0, 'a': 1, 'b': 2, 'c': float('inf'), 'd': float('inf'), 'e': float('inf')}
 
 def test_autores_sem_erdos():
     publicacoes = [['a', 'b'], ['c', 'b']]
-    assert erdos(publicacoes) == {'erdos': 0, 'a': float('inf'), 'b': float('inf'), 'c': float['inf']}
+    assert erdos(publicacoes) == {'erdos': 0, 'a': float('inf'), 'b': float('inf'), 'c': float('inf')}
 
 def test_autores_sem_erdos():
     publicacoes =[['erdos', 'a'], ['a', 'b'], ['c', 'b']]
     assert erdos(publicacoes) == {'erdos': 0, 'a': 1, 'b': 2, 'c': 3}
+
+def test_autor_sem_erdos():
+    publicacoes = [['a']]
+    assert erdos(publicacoes) == {'erdos': 0, 'a': float('inf')}
 
 def test_nivel_3():
     publicacoes =[['erdos'], ['erdos', 'a'], ['a', 'b'], ['c', 'b']]
